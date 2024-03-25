@@ -2,7 +2,15 @@ pipeline {
     agent any
     tools {
         jdk 'jdk17'
-        nodejs 'node20'
+        // nodejs 'node20'
+    }
+    stages {
+        stage('Set Node.js version') {
+            steps {
+                sh 'nvm use 20'
+            }
+        }
+        // Other stages of your pipeline...
     }
     environment {
         SCANNER_HOME = tool 'sonar-scanner'
